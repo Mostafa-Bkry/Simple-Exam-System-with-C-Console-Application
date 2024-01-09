@@ -20,7 +20,7 @@ namespace ExamSys
             markForEachQ = subExamMark / (numOfQuestions <= 0 ? 1 : numOfQuestions);
         }
 
-        public void AddExamQuestions(string questionHeader, string questionBody
+        public override void AddExamQuestions(string questionHeader, string questionBody
             , string correctAns, string? choices = null)
         {
             if (questionHeader == "True or False")
@@ -103,7 +103,7 @@ namespace ExamSys
             }
         }
 
-        public void AddStudentAnswers(int questionNumber, string studentAnswer = "None")
+        public override void AddStudentAnswers(int questionNumber, string studentAnswer = "None")
         {
             if (questionNumber < 0 || questionNumber > questionlist.NumberOfQuestions)
             {

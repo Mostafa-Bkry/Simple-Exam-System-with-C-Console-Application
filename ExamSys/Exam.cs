@@ -18,6 +18,9 @@ namespace ExamSys
             NumberOfQuestions = numOfQuestions;
         }
 
+        public abstract void AddExamQuestions(string questionHeader, string questionBody
+            , string correctAns, string? choices = null);
+        public abstract void AddStudentAnswers(int questionNumber, string studentAnswer = "None");
         internal abstract void ShowExam();
         protected abstract void PrintStudentAnsList();
         protected abstract void PrintStudentFinalMark();

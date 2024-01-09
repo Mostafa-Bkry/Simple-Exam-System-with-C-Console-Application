@@ -22,7 +22,7 @@ namespace ExamSys
             markForEachQ = subExamMark / (numOfQuestions <= 0 ? 1 : numOfQuestions);
         }
 
-        public void AddExamQuestions(string questionHeader, string questionBody
+        public override void AddExamQuestions(string questionHeader, string questionBody
             ,string correctAns, /*string studentAns,*/ string? choices = null) 
         {
             #region ImplementationVr1
@@ -192,7 +192,7 @@ namespace ExamSys
             }
         }
 
-        public void AddStudentAnswers(/*string questionHeader = "None", */int questionNumber, string studentAnswer = "None")
+        public override void AddStudentAnswers(/*string questionHeader = "None", */int questionNumber, string studentAnswer = "None")
         {
             if(questionNumber < 0 || questionNumber > questionlist.NumberOfQuestions)
             {

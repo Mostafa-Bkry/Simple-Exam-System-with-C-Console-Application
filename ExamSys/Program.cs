@@ -2,6 +2,17 @@
 {
     internal class Program
     {
+        public static void ControlAddingQuestoins(Exam exam, int numberOfQuestions)
+        {
+            for (int i = 0; i < numberOfQuestions; i++)
+            {
+                exam.AddExamQuestions("True or False", "1 + 2 = 3", "True");
+                //practiceExam.AddExamQuestions("True or False", "1 + 2 = 3", "True");
+                //practiceExam.AddExamQuestions("Choose One", "1 + 2 =", "B", choices: "3/4/5/6");
+                //practiceExam.AddExamQuestions("Multiple Choices", "1 + 2 =", "C", choices: "3/4-1/5/7");
+            }
+        }
+
         static void Main(string[] args)
         {
             #region Tries
@@ -63,6 +74,7 @@
             ////finalExam.PrintStudentFinalMark(); 
             #endregion
 
+            #region Exam Informations
             string? examType;
             do
             {
@@ -112,12 +124,22 @@
             {
                 Console.WriteLine("Enter Number Of Exam Questions");
             }
-            while(!int.TryParse(Console.ReadLine(), out numberOfQuestions));
+            while (!int.TryParse(Console.ReadLine(), out numberOfQuestions)); 
+            #endregion
 
+            
+           
 
-            PracticeExam practiceExam = new PracticeExam("Math", 20, TimeSpan.Parse("10"), 10);
-
-            //if (examType == "p")
+            if (examType.ToLower() == "p")
+            {
+                PracticeExam practiceExam = new PracticeExam(examSubject, examMarks, examTime, numberOfQuestions);
+                ControlAddingQuestoins(practiceExam, numberOfQuestions);
+            }
+            else
+            {
+                FinalExam finalExam = new FinalExam(examSubject, examMarks, examTime, numberOfQuestions);
+                ControlAddingQuestoins(finalExam, numberOfQuestions);
+            }
         }
     }
 }
