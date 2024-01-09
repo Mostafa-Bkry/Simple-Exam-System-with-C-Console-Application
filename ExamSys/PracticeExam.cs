@@ -164,7 +164,7 @@ namespace ExamSys
                         correctAnswer = MultiChoiceAns.A; break;
                     case "B":
                         correctAnswer = MultiChoiceAns.B; break;
-                    case "D":
+                    case "C":
                         correctAnswer = MultiChoiceAns.C; break;
                     case "A&B":
                         correctAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B; break;
@@ -207,6 +207,8 @@ namespace ExamSys
             }
             else
             {
+                int trueORfalse, multiCheck;
+                string? oneCheck;
                 for (int i = 0; i < questionlist.questions.Length; i++)
                 {
                     if (questionlist.questions[i].QNumber == questionNumber)
@@ -214,6 +216,21 @@ namespace ExamSys
                         if (questionlist.questions[i].Header == "True or False")
                         {
                             //Console.WriteLine("Enter your Answer:");
+
+                            while (true)
+                            {
+                                Console.WriteLine("Enter The Answer (1 if True) or (2 if False)");
+                                if (int.TryParse(Console.ReadLine(), out trueORfalse))
+                                    if (trueORfalse == 1 || trueORfalse == 2)
+                                    {
+                                        if (trueORfalse == 1)
+                                            studentAnswer = "True";
+                                        else
+                                            studentAnswer = "False";
+                                        break;
+                                    }
+                            }
+
                             answerlist.AddStudentAns(
                                 studentAnswer == "True" ? TrueOrFalseAns.True : TrueOrFalseAns.False);
                             //questionlist.questions[i].StudentAnswer =
@@ -224,6 +241,20 @@ namespace ExamSys
                         else if (questionlist.questions[i].Header == "Choose One")
                         {
                             //Console.WriteLine($"Enter your Answer:");
+                            
+
+                            while (true)
+                            {
+                                Console.WriteLine("Enter The Correct Answer (A) or (B) or (C) or (D)");
+                                oneCheck = Console.ReadLine();
+                                if (!string.IsNullOrWhiteSpace(oneCheck))
+                                    if (oneCheck?.ToUpper() == "A" || oneCheck?.ToUpper() == "B"
+                                        || oneCheck?.ToUpper() == "C" || oneCheck?.ToUpper() == "D")
+                                    {
+                                        studentAnswer = oneCheck;
+                                        break;
+                                    }
+                            }
 
                             Enum? studAnswer = default;
 
@@ -247,6 +278,38 @@ namespace ExamSys
                         else /*if (questionlist.questions[i].Header == "Multiple Choices")*/
                         {
                             //Console.WriteLine($"Enter your Answer:");
+                            while (true)
+                            {
+                                Console.WriteLine("Enter The Correct Answer number " +
+                                    "1(A) or 2(B) or 3(C) or 4(A&B) or 5(A&C) or 6(B&C) or 7(All) or 8(NonOfAll)");
+                                if (int.TryParse(Console.ReadLine(), out multiCheck))
+                                    if (multiCheck > 0 && multiCheck < 9)
+                                    {
+                                        switch (multiCheck)
+                                        {
+                                            case 1:
+                                                studentAnswer = "A"; break;
+                                            case 2:
+                                                studentAnswer = "B"; break;
+                                            case 3:
+                                                studentAnswer = "D"; break;
+                                            case 4:
+                                                studentAnswer = "A&B"; break;
+                                            case 5:
+                                                studentAnswer = "A&C"; break;
+                                            case 6:
+                                                studentAnswer = "B&C"; break;
+                                            case 7:
+                                                studentAnswer = "All"; break;
+                                            case 8:
+                                                studentAnswer = "NonOfAll"; break;
+                                            default:
+                                                studentAnswer = "NA";
+                                                break;
+                                        }
+                                        break;
+                                    }
+                            }
 
                             Enum? studAnswer = default;
 
@@ -256,7 +319,7 @@ namespace ExamSys
                                     studAnswer = MultiChoiceAns.A; break;
                                 case "B":
                                     studAnswer = MultiChoiceAns.B; break;
-                                case "D":
+                                case "C":
                                     studAnswer = MultiChoiceAns.C; break;
                                 case "A&B":
                                     studAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B; break;

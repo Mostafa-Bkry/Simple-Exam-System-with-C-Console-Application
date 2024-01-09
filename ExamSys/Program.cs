@@ -126,8 +126,14 @@
             {
                 PracticeExam practiceExam = new PracticeExam(examSubject, examMarks, examTime, numberOfQuestions);
                 ControlQuestions.ControlAddingQuestoins(practiceExam, numberOfQuestions);
+                ControlStudentAnswers controlStudentAnswers = new ControlStudentAnswers(numberOfQuestions);
+                
+                for (int i = 0; i < numberOfQuestions; i++)
+                {
+                    controlStudentAnswers.ControlAnswer(practiceExam);
+                }
 
-                practiceExam.AddStudentAnswers(1, "True");
+                //practiceExam.AddStudentAnswers(1, "True");
 
                 practiceExam.ShowExam();
             }
