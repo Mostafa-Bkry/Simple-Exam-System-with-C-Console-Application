@@ -2,18 +2,7 @@
 {
     internal class Program
     {
-        public static void ControlAddingQuestoins(Exam exam, int numberOfQuestions)
-        {
-            for (int i = 0; i < numberOfQuestions; i++)
-            {
-                exam.AddExamQuestions("True or False", "1 + 2 = 3", "True");
-                //practiceExam.AddExamQuestions("True or False", "1 + 2 = 3", "True");
-                //practiceExam.AddExamQuestions("Choose One", "1 + 2 =", "B", choices: "3/4/5/6");
-                //practiceExam.AddExamQuestions("Multiple Choices", "1 + 2 =", "C", choices: "3/4-1/5/7");
-            }
-        }
-
-        static void Main(string[] args)
+            static void Main(string[] args)
         {
             #region Tries
             //QuestionList questionlist = new QuestionList(10);
@@ -104,17 +93,22 @@
             {
                 char[] delimiterChars = { 'h', 'm' };
 
-                Console.WriteLine("Enter The Exam Time in this Conention --> 00h00m");
+                Console.WriteLine("Enter The Exam Time in this Convention --> 00h00m");
                 input = Console.ReadLine();
                 if (!(input.Contains('h') && input.Contains('m')))
                     continue;
                 else
                 {
                     string[] time = input.Split(delimiterChars);
+                    int checkHours, checkMinutes;
+                    if (!int.TryParse(time[0], out checkHours) || !int.TryParse(time[1], out checkMinutes))
+                        continue;
+                    if (checkHours == 0 && checkMinutes == 0)
+                        continue;
                     //foreach(string c in time) Console.Write($"{c}, ");
                     //Console.WriteLine();
                     //Console.WriteLine(time.Length);
-                    examTime = new TimeSpan(hours: int.Parse(time[0]), minutes: int.Parse(time[1]), seconds: 0);
+                    examTime = new TimeSpan(hours: checkHours, minutes: checkMinutes, seconds: 0);
                     break;
                 }
             }
@@ -128,18 +122,20 @@
             #endregion
 
             
-           
-
             if (examType.ToLower() == "p")
             {
                 PracticeExam practiceExam = new PracticeExam(examSubject, examMarks, examTime, numberOfQuestions);
-                ControlAddingQuestoins(practiceExam, numberOfQuestions);
+                ControlQuestions.ControlAddingQuestoins(practiceExam, numberOfQuestions);
+
+                practiceExam.AddStudentAnswers(1, "True");
+
+                practiceExam.ShowExam();
             }
             else
             {
                 FinalExam finalExam = new FinalExam(examSubject, examMarks, examTime, numberOfQuestions);
-                ControlAddingQuestoins(finalExam, numberOfQuestions);
+                ControlQuestions.ControlAddingQuestoins(finalExam, numberOfQuestions);
             }
         }
     }
-}
+ }

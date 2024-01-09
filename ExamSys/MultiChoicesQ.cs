@@ -9,7 +9,7 @@ namespace ExamSys
     [Flags]
     enum MultiChoiceAns : byte
     {
-        A = 1, B = 2, C = 4, D = 8, All = 0x0F, NonOfAll = 0x20
+        A = 1, B = 2, C = 4, All = 0x0F, NonOfAll = 0x20
     }
     internal class MultiChoicesQ : Question
     {

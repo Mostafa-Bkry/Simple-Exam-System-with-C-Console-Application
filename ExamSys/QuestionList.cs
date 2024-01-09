@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExamSys
 {
-    enum NoAnswer : byte { None = 0 }
+    enum NoAnswer : byte { NoAnswer = 0 }
 
     internal class QuestionList
     {
@@ -95,7 +95,7 @@ namespace ExamSys
                             //Console.WriteLine($"Question number {question.QNumber} Added");
                             //Console.WriteLine(question.CorrectAnswer.QAnswer);
                             answerList.AddCorrectAns(
-                                question.CorrectAnswer.QCorrectAnswer ?? NoAnswer.None);
+                                question.CorrectAnswer.QCorrectAnswer ?? NoAnswer.NoAnswer);
                             //answerList.AddStudentAns(question?.StudentAnswer?.QStudentAnswer ?? NoAnswer.None);
                             break;
                         }

@@ -77,15 +77,22 @@ namespace ExamSys
                         correctAnswer = MultiChoiceAns.A; break;
                     case "B":
                         correctAnswer = MultiChoiceAns.B; break;
-                    case "C": // A & B
+                    case "C":
+                        correctAnswer = MultiChoiceAns.C; break;
+                    case "A&B":
                         correctAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B; break;
-                    case "D":
-                        correctAnswer = MultiChoiceAns.D; break;
-                    case "All": // C & D
-                        correctAnswer = MultiChoiceAns.C ^ MultiChoiceAns.D; break;
+                    case "A&C":
+                        correctAnswer = MultiChoiceAns.A ^ MultiChoiceAns.C; break;
+                    case "B&C":
+                        correctAnswer = MultiChoiceAns.B ^ MultiChoiceAns.C; break;
+                    case "All":
+                        correctAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B ^ MultiChoiceAns.C; break;
                     case "NonOfAll":
                         correctAnswer = MultiChoiceAns.NonOfAll; break;
-                    default: break;
+                    default:
+                        correctAnswer = NoAnswer.NoAnswer;
+                        break;
+                    
                 }
 
                 questionlist.AddQuestion(new MultiChoicesQ(questionHeader, questionBody, markForEachQ
@@ -155,15 +162,21 @@ namespace ExamSys
                                     studAnswer = MultiChoiceAns.A; break;
                                 case "B":
                                     studAnswer = MultiChoiceAns.B; break;
-                                case "C": // A & B
-                                    studAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B; break;
                                 case "D":
-                                    studAnswer = MultiChoiceAns.D; break;
-                                case "All": // C & D
-                                    studAnswer = MultiChoiceAns.C ^ MultiChoiceAns.D; break;
+                                    studAnswer = MultiChoiceAns.C; break;
+                                case "A&B":
+                                    studAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B; break;
+                                case "A&C":
+                                    studAnswer = MultiChoiceAns.A ^ MultiChoiceAns.C; break;
+                                case "B&C":
+                                    studAnswer = MultiChoiceAns.B ^ MultiChoiceAns.C; break;
+                                case "All":
+                                    studAnswer = MultiChoiceAns.A ^ MultiChoiceAns.B ^ MultiChoiceAns.C; break;
                                 case "NonOfAll":
                                     studAnswer = MultiChoiceAns.NonOfAll; break;
-                                default: break;
+                                default:
+                                    studAnswer = NoAnswer.NoAnswer;
+                                    break;
                             }
                             answerlist.AddStudentAns(studAnswer ?? MultiChoiceAns.NonOfAll);
                             break;
