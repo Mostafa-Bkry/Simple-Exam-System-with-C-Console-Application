@@ -254,7 +254,10 @@ namespace ExamSys
             for (int i = 0; i < questionlist.questions.Length; i++)
             {
                 if (questionlist.questions[i].QNumber == questionNumber)
+                {
                     Console.WriteLine(questionlist.questions[i].QuestionFormat());
+                    break;
+                }
             }
         }
 

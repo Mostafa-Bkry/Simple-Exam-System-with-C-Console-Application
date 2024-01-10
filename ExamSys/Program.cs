@@ -128,6 +128,8 @@
                 ControlQuestions.ControlAddingQuestoins(practiceExam, numberOfQuestions);
                 Console.WriteLine("#####################################################");
                 ControlStudentAnswers controlStudentAnswers = new ControlStudentAnswers(numberOfQuestions);
+
+                //Console.Clear();
                 
                 for (int i = 0; i < numberOfQuestions; i++)
                 {
@@ -135,6 +137,7 @@
                 }
                 //practiceExam.AddStudentAnswers(1, "True");
                 Console.WriteLine("#####################################################");
+                //Console.Clear();
                 practiceExam.ShowExam();
             }
             else
@@ -143,6 +146,8 @@
                 ControlQuestions.ControlAddingQuestoins(finalExam, numberOfQuestions);
                 Console.WriteLine("#####################################################");
                 ControlStudentAnswers controlStudentAnswers = new ControlStudentAnswers(numberOfQuestions);
+                
+                //Console.Clear();
 
                 for (int i = 0; i < numberOfQuestions; i++)
                 {
@@ -150,6 +155,7 @@
                 }
 
                 Console.WriteLine("#####################################################");
+                //Console.Clear();
                 finalExam.ShowExam();
             }
         }
