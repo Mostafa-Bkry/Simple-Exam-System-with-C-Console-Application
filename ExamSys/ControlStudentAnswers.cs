@@ -36,6 +36,7 @@ namespace ExamSys
                         {
                             answered[index] = questionNumber;
                             index++;
+                            exam.ShowQuestionToStudentToAnswer(questionNumber);
                             exam.AddStudentAnswers(questionNumber);
                             break;
                         }

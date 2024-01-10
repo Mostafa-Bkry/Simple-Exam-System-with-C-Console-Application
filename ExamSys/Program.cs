@@ -126,21 +126,31 @@
             {
                 PracticeExam practiceExam = new PracticeExam(examSubject, examMarks, examTime, numberOfQuestions);
                 ControlQuestions.ControlAddingQuestoins(practiceExam, numberOfQuestions);
+                Console.WriteLine("#####################################################");
                 ControlStudentAnswers controlStudentAnswers = new ControlStudentAnswers(numberOfQuestions);
                 
                 for (int i = 0; i < numberOfQuestions; i++)
                 {
                     controlStudentAnswers.ControlAnswer(practiceExam);
                 }
-
                 //practiceExam.AddStudentAnswers(1, "True");
-
+                Console.WriteLine("#####################################################");
                 practiceExam.ShowExam();
             }
             else
             {
                 FinalExam finalExam = new FinalExam(examSubject, examMarks, examTime, numberOfQuestions);
                 ControlQuestions.ControlAddingQuestoins(finalExam, numberOfQuestions);
+                Console.WriteLine("#####################################################");
+                ControlStudentAnswers controlStudentAnswers = new ControlStudentAnswers(numberOfQuestions);
+
+                for (int i = 0; i < numberOfQuestions; i++)
+                {
+                    controlStudentAnswers.ControlAnswer(finalExam);
+                }
+
+                Console.WriteLine("#####################################################");
+                finalExam.ShowExam();
             }
         }
     }

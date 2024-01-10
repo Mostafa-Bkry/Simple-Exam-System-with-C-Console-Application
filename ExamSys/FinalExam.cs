@@ -249,6 +249,15 @@ namespace ExamSys
             }
         }
 
+        public override void ShowQuestionToStudentToAnswer(int questionNumber)
+        {
+            for (int i = 0; i < questionlist.questions.Length; i++)
+            {
+                if (questionlist.questions[i].QNumber == questionNumber)
+                    Console.WriteLine(questionlist.questions[i].QuestionFormat());
+            }
+        }
+
         protected override void PrintStudentAnsList()
         {
             for (int i = 0; i < answerlist.StudentAnswers.Length; i++)
